@@ -11,12 +11,33 @@ let roster = [
 
 // [[roster[0][0], roster[1][0]], [roster[0][1], roster[1][1]],...
 
+// 1
+// column.roaster[0][0] = roaster[1][0]
+// column.roaster[0][1] = roaster[1][1]
+// column.roaster[0][2] = roaster[1][2]
+// column.roaster[0][3] = roaster[1][3]
 function convert_roster_format (nestedArray) {
-  // your convert code here
+  if (nestedArray[0].length > nestedArray[1].length || nestedArray[0].length < nestedArray[1].length) {
+    return 'MOHON CEK INPUT KEMBALI'
+  } 
+  let result = []
+  for (var i = 1; i < nestedArray.length ; i++) {
+    let column = {}
+    for (var j = 0; j < nestedArray[0].length; j++) {
+      column[nestedArray[0][j]] = nestedArray[i][j]
+    }
+    result.push(column)
+  }
+  return result
 }
+console.log('--------Ini Daftarnya-----');
+console.log(convert_roster_format(roster));
+console.log('----------------------');
 
 let object_roster = convert_roster_format(roster)
+console.log('======Ini hasilnya=======');
 console.log(object_roster[2])
+console.log('----------------------');
 
 // => { "Number": 31, "Name": "Harvey Kay", "Position": "Shooting Guard", "Points per Game": [0, 30, 16, 0, 25] }
 
