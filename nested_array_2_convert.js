@@ -1,5 +1,18 @@
 'use strict'
 
+/*
+PSEUDOCODE
+
+1. buat variabel menampung sebuah array kosong
+2. buat juga variabel untuk menampung sebuag object literal kosong
+3. lalu loop dari i = 1 sepanjang parameter dengan increment sebanyak 1
+  3.a. parameter dengan index [0] akan menjadi key daripada object kita
+  3.b. lalu masukkan isi dari setelah index ke 1 menjadi value dari key object kita
+  3.c. push object ke dalam array
+  3.d. kosongkan object
+4. return array;
+*/
+
 let roster = [
   ['Number', 'Name', 'Position', 'Points per Game'],
   [12, 'Joe Schmo', 'Center', [14, 32, 7, 0, 23] ],
@@ -12,7 +25,17 @@ let roster = [
 // [[roster[0][0], roster[1][0]], [roster[0][1], roster[1][1]],...
 
 function convert_roster_format (nestedArray) {
-  // your convert code here
+  var arr = [];
+  var obj = {};
+  for (var i = 1; i < nestedArray.length; i++) {
+    obj[`${nestedArray[0][0]}`] = nestedArray[i][0];
+    obj[`${nestedArray[0][1]}`] = nestedArray[i][1];
+    obj[`${nestedArray[0][2]}`] = nestedArray[i][2];
+    obj[`${nestedArray[0][3]}`] = nestedArray[i][3];
+    arr.push(obj);
+    obj = {};
+  }
+  return arr
 }
 
 let object_roster = convert_roster_format(roster)
